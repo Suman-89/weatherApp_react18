@@ -1,0 +1,33 @@
+.weatherBg {
+    text-align: center;
+    background: url("https://img.hoodline.com/uploads/story/image/950052/unsplash__..featured_image_1..partly_cloudy_4.jpg.jpg");
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.heading {
+    color: azure;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+}
+.weather_box {
+    margin: auto;
+    width: 500px;
+    height: 250px;
+}
+
+.back_image {
+    margin-top: 2rem;
+    width: 60px;
+    height: 60px;
+}
+.weather_city {
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.weather_temp {
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
