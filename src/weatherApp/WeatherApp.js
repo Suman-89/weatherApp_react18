@@ -7,6 +7,7 @@ const WeatherApp = () => {
   const [inputPlace, setInputPlace] = useState("");
   const [weatherData, setWeatherData] = useState({});
 
+
   const getWeatherData = (cityName) => {
     if (!cityName) return;
     const apiURL =
@@ -29,8 +30,8 @@ const WeatherApp = () => {
           ", temparature-->",
           response.data.main.temp
         );
-
-        setWeatherData(response.data);
+        console.log('response-->',response?.data);
+        setWeatherData(response?.data);
         setTimeout(() => {
           setInputPlace("");
         });
@@ -42,7 +43,7 @@ const WeatherApp = () => {
   };
 
   useEffect(() => {
-    getWeatherData("");
+    getWeatherData('kolkata');
   }, []);
 
   const searchBtn = () => {
@@ -54,6 +55,10 @@ const WeatherApp = () => {
     setInputPlace(e.target.value);
     // console.log("value-->", e.target.value);
   };
+
+  console.log('weatherdata-->',weatherData);
+  console.log('weatherData?.main?.temp-->',weatherData?.main?.temp);
+
 
   return (
     <>
@@ -79,16 +84,24 @@ const WeatherApp = () => {
           </div>
         </div>
         <div className="col-md-12 text-center mt-5">
+          
           <div className="shadow rounded weather_box">
-            <img
-              className="back_image"
-              src="https://img.freepik.com/premium-vector/flat-sun-cloud-vector-illustration-sun-hiding-cloud-with-long-shadow_118339-1581.jpg?w=360"
-              alt=""
-            />
-            <h5 className="weather_city">{weatherData.name}</h5>
-            <h6 className="weather_temp">
-              {(weatherData?.main?.temp - 273.15).toFixed(2)}℃{" "}
-            </h6>
+            {
+              weatherData?.main?.temp === undefined ? 
+              (<h2>Please search any place</h2>):(
+                <><img
+                className="back_image"
+                src="https://img.freepik.com/premium-vector/flat-sun-cloud-vector-illustration-sun-hiding-cloud-with-long-shadow_118339-1581.jpg?w=360"
+                alt=""
+              />
+              <h5 className="weather_city">{weatherData.name}</h5>
+              <h6 className="weather_temp">
+                {(weatherData?.main?.temp - 273.15).toFixed(2)}℃{" "}
+              </h6>
+              </>
+              )
+            }
+            
           </div>
         </div>
       </div>
